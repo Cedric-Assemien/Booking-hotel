@@ -1,21 +1,22 @@
 // ignore_for_file: camel_case_types
 
+import 'package:booking_hotel/detail_hotel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // ignore: unnecessary_import
 import 'package:flutter/widgets.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:ma_3eme_app/detail_hotel.dart';
 
-class acceuilPage extends StatefulWidget {
-  const acceuilPage({super.key});
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<acceuilPage> createState() => _acceuilPageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _acceuilPageState extends State<acceuilPage> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
