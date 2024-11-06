@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 
 
+import 'package:booking_hotel/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // ignore: unnecessary_import
@@ -8,7 +9,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 class DetailHotel extends StatefulWidget {
-  const DetailHotel({super.key});
+  final NearbyLocation nearby;
+  const DetailHotel({super.key,required this.nearby});
+  
 
   @override
   State<DetailHotel> createState() => _DetailHotelState();
@@ -66,10 +69,9 @@ class _DetailHotelState extends State<DetailHotel> {
             width: MediaQuery.of(context).size.width * 0.9,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                image: const DecorationImage(
+                image:  DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage(
-                        "assets/images/madbookies  (73)-edited.jpg"))),
+                    image:widget.nearby.mainImage.image)),
             child: Stack(children: [
               Positioned(
                 top: 15,
@@ -148,7 +150,7 @@ class _DetailHotelState extends State<DetailHotel> {
                   color: const Color.fromARGB(255, 245, 244, 244),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Row(
+                child:  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
@@ -160,25 +162,25 @@ class _DetailHotelState extends State<DetailHotel> {
                         width: 5,
                       ),
                       Text(
-                        "5.0",
+                       widget.nearby.rating.toString(),
                         style: TextStyle(fontWeight: FontWeight.w500),
                       )
                     ]),
               ),
             ],
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.all(15.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "The Luxury Hotel with Pool",
+                  widget.nearby.name,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
                 Text.rich(
                   TextSpan(
-                      text: "\$200,7",
+                      text: "\$${widget.nearby.price}",
                       style: TextStyle(fontWeight: FontWeight.bold),
                       children: [
                         TextSpan(
@@ -193,7 +195,7 @@ class _DetailHotelState extends State<DetailHotel> {
               ],
             ),
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(left: 10.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -203,24 +205,23 @@ class _DetailHotelState extends State<DetailHotel> {
                   width: 5,
                 ),
                 Text(
-                  "2972 westheimer Rd,Santa Ana,linois",
+                  widget.nearby.adress,
                   style: TextStyle(color: Colors.grey, fontSize: 14),
                 )
               ],
             ),
           ),
-          const Padding(
+           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Description",
+                 widget.nearby.description,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Text.rich(TextSpan(
-                    text:
-                        "rghejgkdshfcudnjkehdsfncjkerdh,snfcjhrfedsvfgdsvrfedsffvgrdfgfvcjrfdshfncjkfedsn;fwckjrefds,;bfcnjef,ds;bwfnc jkef,;dsnfc kj,fe;dsfnchjerdsn,bcxjhedsn,",
+                    text:widget.nearby.description,
                     style: TextStyle(color: Colors.grey, fontSize: 14),
                     children: [
                       TextSpan(
