@@ -1,4 +1,4 @@
-import 'package:booking_hotel/home_page.dart';
+import 'package:booking_hotel/signIn_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,12 +13,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Booking Hotel',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: const SigninPage(),
     );
   }
 }

@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
-class page_detail extends StatefulWidget {
-  const page_detail({super.key});
+class DetailHotel extends StatefulWidget {
+  const DetailHotel({super.key});
 
   @override
-  State<page_detail> createState() => _page_detailState();
+  State<DetailHotel> createState() => _DetailHotelState();
 }
 
-class _page_detailState extends State<page_detail> {
+class _DetailHotelState extends State<DetailHotel> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

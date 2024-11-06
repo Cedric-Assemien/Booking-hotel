@@ -1,13 +1,8 @@
-// ignore_for_file: camel_case_types
-
 import 'package:booking_hotel/detail_hotel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// ignore: unnecessary_import
-import 'package:flutter/widgets.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -147,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const page_detail()));
+                                builder: (context) => const DetailHotel()));
                       },
                       child: Container(
                         //  height: 290,
