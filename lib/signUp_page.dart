@@ -1,3 +1,4 @@
+import 'package:booking_hotel/navigation_bar.dart';
 import 'package:booking_hotel/signIn_page.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -36,15 +37,13 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff85a236),
+      backgroundColor: mainColor,
       body: SafeArea(
         child: Column(
           children: [
-            Padding(
-                padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-                child: SizedBox()),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: 100,
+              child: Image.asset("assets/images/easyStay.png"),
             ),
             Expanded(
                 child: Container(
@@ -84,8 +83,8 @@ class _SignupPageState extends State<SignupPage> {
                           Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                FilledButton.icon(
-                                    style: FilledButton.styleFrom(
+                                ElevatedButton.icon(
+                                    style: ElevatedButton.styleFrom(
                                         backgroundColor: const Color.fromARGB(
                                             255, 246, 244, 244),
                                         shape: const CircleBorder()),
@@ -94,8 +93,8 @@ class _SignupPageState extends State<SignupPage> {
                                       SocialMediaIcons.google,
                                       color: Colors.red,
                                     )),
-                                FilledButton.icon(
-                                    style: FilledButton.styleFrom(
+                                ElevatedButton.icon(
+                                    style: ElevatedButton.styleFrom(
                                         backgroundColor: const Color.fromARGB(
                                             255, 24, 4, 209),
                                         shape: const CircleBorder()),
@@ -104,8 +103,8 @@ class _SignupPageState extends State<SignupPage> {
                                       SocialMediaIcons.facebook,
                                       color: Colors.white,
                                     )),
-                                FilledButton.icon(
-                                    style: FilledButton.styleFrom(
+                                ElevatedButton.icon(
+                                    style: ElevatedButton.styleFrom(
                                         backgroundColor:
                                             const Color(0xff82dcff),
                                         shape: const CircleBorder()),
@@ -231,37 +230,16 @@ class _SignupPageState extends State<SignupPage> {
                               ],
                             ),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              const Text("Reminder me next time"),
-                              const SizedBox(
-                                width: 2,
-                              ),
-                              Container(
-                                height: 20,
-                                width: 40,
-                                decoration: BoxDecoration(
-                                  color:
-                                      const Color.fromARGB(255, 245, 163, 41),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 40,
-                          ),
                           Center(
-                            child: FilledButton(
-                                style: FilledButton.styleFrom(
-                                    backgroundColor:
-                                        Colors.orange.withOpacity(0.7),
+                            child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: mainColor,
                                     fixedSize: const Size(350, 60)),
                                 onPressed: () {},
                                 child: Text(
                                   "Sign up".toUpperCase(),
                                   style: const TextStyle(
+                                      color: Colors.white,
                                       fontWeight: FontWeight.bold),
                                 )),
                           ),
@@ -277,9 +255,9 @@ class _SignupPageState extends State<SignupPage> {
                                             builder: (context) =>
                                                 const SigninPage()));
                                   },
-                                  child: const Text(
+                                  child: Text(
                                     "Sign in",
-                                    style: TextStyle(color: Colors.orange),
+                                    style: TextStyle(color: mainColor),
                                   ),
                                 )
                               ])

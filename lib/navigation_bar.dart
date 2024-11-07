@@ -14,7 +14,7 @@ class navigationBar extends StatefulWidget {
   State<navigationBar> createState() => _navigationBarState();
 }
 
-Color mainColor = Color(0xff3498db);
+Color mainColor = Color.fromARGB(255, 7, 0, 139);
 
 class _navigationBarState extends State<navigationBar> {
   int _selectedIndex = 0;
@@ -29,6 +29,7 @@ class _navigationBarState extends State<navigationBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
           fixedColor: mainColor,
           unselectedItemColor: Colors.grey,
           items: bottomBarList.map((item) => item.item).toList(),

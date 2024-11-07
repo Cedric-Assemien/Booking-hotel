@@ -14,6 +14,7 @@ class SigninPage extends StatefulWidget {
 }
 
 class _SigninPageState extends State<SigninPage> {
+  bool rememberMe = true;
   final formKey = GlobalKey<FormState>();
 
   late TextEditingController emailController;
@@ -36,15 +37,13 @@ class _SigninPageState extends State<SigninPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff85a236),
+      backgroundColor: mainColor,
       body: SafeArea(
         child: Column(
           children: [
-            Padding(
-                padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-                child: SizedBox()),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: 100,
+              child: Image.asset("assets/images/easyStay.png"),
             ),
             Expanded(
                 child: Container(
@@ -84,8 +83,8 @@ class _SigninPageState extends State<SigninPage> {
                           Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                FilledButton.icon(
-                                    style: FilledButton.styleFrom(
+                                ElevatedButton.icon(
+                                    style: ElevatedButton.styleFrom(
                                         backgroundColor: const Color.fromARGB(
                                             255, 246, 244, 244),
                                         shape: const CircleBorder()),
@@ -94,8 +93,8 @@ class _SigninPageState extends State<SigninPage> {
                                       SocialMediaIcons.google,
                                       color: Colors.red,
                                     )),
-                                FilledButton.icon(
-                                    style: FilledButton.styleFrom(
+                                ElevatedButton.icon(
+                                    style: ElevatedButton.styleFrom(
                                         backgroundColor: const Color.fromARGB(
                                             255, 24, 4, 209),
                                         shape: const CircleBorder()),
@@ -104,8 +103,8 @@ class _SigninPageState extends State<SigninPage> {
                                       SocialMediaIcons.facebook,
                                       color: Colors.white,
                                     )),
-                                FilledButton.icon(
-                                    style: FilledButton.styleFrom(
+                                ElevatedButton.icon(
+                                    style: ElevatedButton.styleFrom(
                                         backgroundColor:
                                             const Color(0xff82dcff),
                                         shape: const CircleBorder()),
@@ -201,26 +200,27 @@ class _SigninPageState extends State<SigninPage> {
                               const SizedBox(
                                 width: 2,
                               ),
-                              Container(
-                                height: 20,
-                                width: 40,
-                                decoration: BoxDecoration(
-                                  color:
-                                      const Color.fromARGB(255, 245, 163, 41),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
+                              Switch(
+                                  activeTrackColor: mainColor,
+                                  value: rememberMe,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      rememberMe = value;
+                                    });
+                                  })
                             ],
                           ),
                           const SizedBox(
                             height: 40,
                           ),
                           Center(
-                            child: FilledButton(
-                                style: FilledButton.styleFrom(
-                                    backgroundColor:
-                                        Colors.orange.withOpacity(0.7),
-                                    fixedSize: const Size(350, 60)),
+                            child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  fixedSize: Size(150, 50),
+                                  elevation: 10,
+                                  backgroundColor: mainColor,
+                                  foregroundColor: Colors.white,
+                                ),
                                 onPressed: () {
                                   Navigator.push(
                                       context,
@@ -246,9 +246,9 @@ class _SigninPageState extends State<SigninPage> {
                                             builder: (context) =>
                                                 const SignupPage()));
                                   },
-                                  child: const Text(
+                                  child: Text(
                                     "Sign up",
-                                    style: TextStyle(color: Colors.orange),
+                                    style: TextStyle(color: mainColor),
                                   ),
                                 )
                               ])
