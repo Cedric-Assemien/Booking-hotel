@@ -1,6 +1,5 @@
 // ignore_for_file: camel_case_types
 
-
 import 'package:booking_hotel/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,14 +9,20 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 class DetailHotel extends StatefulWidget {
   final NearbyLocation nearby;
-  const DetailHotel({super.key,required this.nearby});
-  
+  const DetailHotel({super.key, required this.nearby});
 
   @override
   State<DetailHotel> createState() => _DetailHotelState();
 }
 
 class _DetailHotelState extends State<DetailHotel> {
+  bool extenDescrip = false;
+  void _toggleDescription() {
+    setState(() {
+      extenDescrip = !extenDescrip;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,13 +70,12 @@ class _DetailHotelState extends State<DetailHotel> {
           ),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 8),
-            height: 280,
+            height: 310,
             width: MediaQuery.of(context).size.width * 0.9,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                image:  DecorationImage(
-                    fit: BoxFit.cover,
-                    image:widget.nearby.mainImage.image)),
+                image: DecorationImage(
+                    fit: BoxFit.cover, image: widget.nearby.mainImage.image)),
             child: Stack(children: [
               Positioned(
                 top: 15,
@@ -102,45 +106,52 @@ class _DetailHotelState extends State<DetailHotel> {
                   color: const Color.fromARGB(255, 245, 244, 244),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.wifi,
-                        color: Colors.black,
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        "Free wifi",
-                        style: TextStyle(fontWeight: FontWeight.w500),
-                      )
-                    ]),
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Icon(
+                    Icons.wifi,
+                    color: Colors.black,
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  widget.nearby.isWifi
+                      ? Text(
+                          "Free wifi",
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        )
+                      : Text(
+                          "No wifi",
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        )
+                ]),
               ),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 height: 35,
-                width: 155,
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 245, 244, 244),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        FeatherIcons.coffee,
-                        color: Colors.black,
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        "Free Breast/fast",
-                        style: TextStyle(fontWeight: FontWeight.w500),
-                      )
-                    ]),
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Icon(
+                    FeatherIcons.coffee,
+                    color: Colors.black,
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  widget.nearby.isbreastFast
+                      ? Text(
+                          "Free Breast/fast",
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        )
+                      : Text(
+                          "No free Breast/fast",
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        )
+                ]),
               ),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -150,22 +161,21 @@ class _DetailHotelState extends State<DetailHotel> {
                   color: const Color.fromARGB(255, 245, 244, 244),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child:  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.star,
-                        color: Colors.yellow,
-                        shadows: [Shadow(color: Colors.black, blurRadius: 0.5)],
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                       widget.nearby.rating.toString(),
-                        style: TextStyle(fontWeight: FontWeight.w500),
-                      )
-                    ]),
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Icon(
+                    Icons.star,
+                    color: Colors.yellow,
+                    shadows: [Shadow(color: Colors.black, blurRadius: 0.5)],
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    widget.nearby.rating.toString(),
+                    style: TextStyle(fontWeight: FontWeight.w500),
+                  )
+                ]),
               ),
             ],
           ),
@@ -196,7 +206,7 @@ class _DetailHotelState extends State<DetailHotel> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 10.0),
+            padding: EdgeInsets.only(left: 13.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -211,24 +221,37 @@ class _DetailHotelState extends State<DetailHotel> {
               ],
             ),
           ),
-           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+          Padding(
+            padding: const EdgeInsets.only(top: 10, right: 10.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                 widget.nearby.description,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                const Text(
+                  "Description",
+                  style: TextStyle(
+                      fontSize: 19,
+                      color: Colors.black,
+                      fontFamily: "baloo",
+                      fontWeight: FontWeight.bold),
                 ),
-                Text.rich(TextSpan(
-                    text:widget.nearby.description,
-                    style: TextStyle(color: Colors.grey, fontSize: 14),
-                    children: [
-                      TextSpan(
-                          text: "Read More...",
-                          style: TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.bold))
-                    ])),
+                Text(
+                  widget.nearby.description,
+                  style: const TextStyle(fontSize: 14, color: Colors.black),
+                  maxLines: extenDescrip ? null : 2,
+                  overflow: extenDescrip
+                      ? TextOverflow.visible
+                      : TextOverflow.ellipsis,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 300),
+                  child: TextButton(
+                    onPressed: _toggleDescription,
+                    child: Text(
+                      extenDescrip ? 'Reduce' : 'Extend',
+                      style: const TextStyle(color: Colors.black),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -242,54 +265,24 @@ class _DetailHotelState extends State<DetailHotel> {
               ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Row(children: [
-                  Container(
-                    height: 100,
-                    width: 120,
-                    margin: const EdgeInsets.only(right: 10),
-                    decoration: BoxDecoration(
+                child: Row(
+                  children: List.generate(
+                    widget.nearby.imagePreview.length,
+                    (index) => Container(
+                      height: 100,
+                      width: 120,
+                      margin: const EdgeInsets.only(right: 10),
+                      decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        image: const DecorationImage(
+                        image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: AssetImage("assets/images/1518365.jpg"),
-                        )),
+                          image: widget.nearby.imagePreview[index].image,
+                        ),
+                      ),
+                    ),
                   ),
-                  Container(
-                    height: 100,
-                    width: 120,
-                    margin: const EdgeInsets.only(right: 10),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: const DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage("assets/images/Cabecera_M.jpg"),
-                        )),
-                  ),
-                  Container(
-                    height: 100,
-                    width: 120,
-                    margin: const EdgeInsets.only(right: 10),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: const DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage("assets/images/Slide-2.jpg"),
-                        )),
-                  ),
-                  Container(
-                    height: 100,
-                    width: 120,
-                    margin: const EdgeInsets.only(right: 10),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: const DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage(
-                              "assets/images/type de chambre par agencement.webp"),
-                        )),
-                  ),
-                ]),
-              ),
+                ),
+              )
             ]),
           ),
           Container(

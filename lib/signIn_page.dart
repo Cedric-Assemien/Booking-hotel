@@ -3,7 +3,9 @@
 import 'package:booking_hotel/navigation_bar.dart';
 import 'package:booking_hotel/signUp_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:pinput/pinput.dart';
 import 'package:social_media_buttons/social_media_icons.dart';
 
 class SigninPage extends StatefulWidget {
@@ -14,6 +16,239 @@ class SigninPage extends StatefulWidget {
 }
 
 class _SigninPageState extends State<SigninPage> {
+  Widget ChampsOPT() {
+    return Form(
+        key: formKeyOTP,
+        child: Pinput(
+          validator: (value) {
+            return value == validOPT ? null : "Code incorrecte";
+          },
+        ));
+  }
+
+  // ignore: non_constant_identifier_names
+  void AlertDialogResetMDP() {
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor: mainColor.withOpacity(0.75),
+            scrollable: true,
+            title: const Text(
+              'Reset your password',
+              style: TextStyle(color: Colors.white, fontFamily: "baloo"),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  "Enter your email",
+                  style: TextStyle(
+                      fontSize: 15, color: Colors.white, fontFamily: "baloo"),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 5, right: 5),
+                  child: TextFormField(
+                    cursorColor: mainColor,
+                    style: TextStyle(
+                      color:
+                          Colors.black.withOpacity(0.8), // mainColor du texte
+                    ),
+                    keyboardType: TextInputType.emailAddress,
+                    controller: emailController,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return '';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(22),
+                          borderSide: BorderSide(color: mainColor),
+                        ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(22),
+                            borderSide: BorderSide.none),
+                        filled: true,
+                        fillColor: Colors.white.withOpacity(0.7),
+                        hintText: "easystay@gmail.com",
+                        hintStyle: const TextStyle(color: Colors.black54),
+                        prefixIcon: const Icon(
+                          Icons.mail_outlined,
+                          color: Colors.black54,
+                        )),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      side: const BorderSide(color: Colors.white, width: 3),
+                      fixedSize: const Size(200, 50),
+                    ),
+                    onPressed: () {
+                      Get.snackbar(
+                        'Code envoyer à ${emailController.text}',
+                        "Vérifier votre mail pour reinitialiser votre mot de passe ",
+                        duration: const Duration(seconds: 8),
+                      );
+                    },
+                    child: const Text(
+                      "Send code",
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontFamily: 'baloo'),
+                    )),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Divider(
+                  thickness: 2,
+                  height: 1,
+                  color: Colors.white,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  "Enter the opt code",
+                  style: TextStyle(
+                      fontSize: 15, color: Colors.white, fontFamily: "baloo"),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                ChampsOPT(),
+                Padding(
+                  padding: const EdgeInsets.only(left: 150),
+                  child: TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      "Resend code",
+                      style: TextStyle(
+                          fontSize: 13,
+                          color: Colors.white,
+                          fontFamily: "baloo"),
+                    ),
+                  ),
+                ),
+                OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      side: const BorderSide(color: Colors.white, width: 3),
+                      fixedSize: const Size(200, 50),
+                    ),
+                    onPressed: () {
+                      if (formKeyOTP.currentState!.validate()) {
+                        Get.snackbar(
+                            "Félicitations", "Renseigner votre nouveau MDP",
+                            duration: const Duration(seconds: 5));
+                      }
+                    },
+                    child: const Text(
+                      "Check",
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontFamily: 'baloo'),
+                    )),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Divider(
+                  thickness: 2,
+                  height: 1,
+                  color: Colors.white,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  "Enter your new password",
+                  style: TextStyle(
+                      fontSize: 15, color: Colors.white, fontFamily: "baloo"),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 5, right: 5),
+                  child: TextFormField(
+                    cursorColor: mainColor,
+                    style: TextStyle(
+                      color:
+                          Colors.black.withOpacity(0.8), // mainColor du texte
+                    ),
+                    obscureText: true,
+                    keyboardType: TextInputType.name,
+                    controller: passwordController,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return '';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(22),
+                        borderSide: BorderSide(color: mainColor),
+                      ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(22),
+                          borderSide: BorderSide.none),
+                      filled: true,
+                      fillColor: Colors.white.withOpacity(0.7),
+                      hintText: "Password",
+                      hintStyle: const TextStyle(color: Colors.black54),
+                      prefixIcon: const Icon(
+                        Icons.key,
+                        color: Colors.black54,
+                      ),
+                      suffixIcon: const Icon(
+                        Icons.remove_red_eye_outlined,
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      side: const BorderSide(color: Colors.white, width: 3),
+                      fixedSize: const Size(200, 50),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      "Check",
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontFamily: 'baloo'),
+                    )),
+                const SizedBox(
+                  height: 20,
+                ),
+                IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(
+                      MdiIcons.closeCircle,
+                      size: 35,
+                      color: Colors.red,
+                    ))
+              ],
+            ),
+          );
+        });
+  }
+
+  String validOPT = "1234";
+  final formKeyOTP = GlobalKey<FormState>();
   bool rememberMe = true;
   final formKey = GlobalKey<FormState>();
 
@@ -193,22 +428,14 @@ class _SigninPageState extends State<SigninPage> {
                               ],
                             ),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              const Text("Reminder me next time"),
-                              const SizedBox(
-                                width: 2,
-                              ),
-                              Switch(
-                                  activeTrackColor: mainColor,
-                                  value: rememberMe,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      rememberMe = value;
-                                    });
-                                  })
-                            ],
+                          Padding(
+                            padding: EdgeInsets.only(left: 10),
+                            child: TextButton(
+                                onPressed: AlertDialogResetMDP,
+                                child: Text(
+                                  "Forgot password ?",
+                                  style: TextStyle(color: Colors.grey),
+                                )),
                           ),
                           const SizedBox(
                             height: 40,
