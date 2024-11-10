@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:booking_hotel/home_page.dart';
+import 'package:booking_hotel/list_proprety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // ignore: unnecessary_import

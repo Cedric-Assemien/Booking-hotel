@@ -1,4 +1,5 @@
 import 'package:booking_hotel/detail_hotel.dart';
+import 'package:booking_hotel/list_proprety.dart';
 import 'package:booking_hotel/navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,98 +15,6 @@ class Explore extends StatefulWidget {
 
 class _ExploreState extends State<Explore> {
   int searchProperty = 0;
-  List<NearbyLocation> nearby = [
-    NearbyLocation(
-        name: "The luxury hotel with pool",
-        mainImage: Image.asset("assets/images/Cabecera_M.jpg"),
-        price: "200",
-        adress: "Lohore, Pakistan",
-        rating: 4.5,
-        isLike: false,
-        isFavourite: false,
-        isWifi: true,
-        isbreastFast: false,
-        description:
-            "The luxury hotel with pool Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
-        imagePreview: [
-          Image.asset("assets/images/Cabecera_M.jpg"),
-          Image.asset("assets/images/Cabecera_M.jpg"),
-          Image.asset("assets/images/Cabecera_M.jpg"),
-          Image.asset("assets/images/Cabecera_M.jpg"),
-        ]),
-    NearbyLocation(
-        name: "The luxury residence with pool",
-        mainImage: Image.asset("assets/images/madbookies.jpg"),
-        price: " 300",
-        adress: "abidjan,CI",
-        isLike: true,
-        rating: 4.5,
-        isFavourite: false,
-        isWifi: false,
-        isbreastFast: true,
-        description:
-            "The luxury residence with pool Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
-        imagePreview: [
-          Image.asset("assets/images/madbookies.jpg"),
-          Image.asset("assets/images/madbookies.jpg"),
-          Image.asset("assets/images/madbookies.jpg"),
-          Image.asset("assets/images/madbookies.jpg"),
-        ]),
-    NearbyLocation(
-        name: "The palace with pool",
-        mainImage: Image.asset("assets/images/Palace5.jpg"),
-        price: " 1000",
-        adress: "Dakar,senegal",
-        isLike: false,
-        rating: 3.0,
-        isFavourite: false,
-        isWifi: true,
-        isbreastFast: true,
-        description:
-            "The palace with pool .Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
-        imagePreview: [
-          Image.asset("assets/images/Palace5.jpg"),
-          Image.asset("assets/images/Palace5.jpg"),
-          Image.asset("assets/images/Palace5.jpg"),
-          Image.asset("assets/images/Palace5.jpg"),
-        ]),
-    NearbyLocation(
-        name: "The manoir with pool",
-        mainImage: Image.asset("assets/images/hotels-luxe.jpg"),
-        price: " 2000",
-        adress: "dubai, UAE",
-        isLike: true,
-        rating: 4.5,
-        isFavourite: false,
-        isWifi: false,
-        isbreastFast: true,
-        description:
-            "The manoir with pool Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
-        imagePreview: [
-          Image.asset("assets/images/hotels-luxe.jpg"),
-          Image.asset("assets/images/hotels-luxe.jpg"),
-          Image.asset("assets/images/hotels-luxe.jpg"),
-          Image.asset("assets/images/hotels-luxe.jpg"),
-        ]),
-    NearbyLocation(
-        name: "The luxury with pool",
-        mainImage: Image.asset("assets/images/05-The-Pa.jpg"),
-        price: " 800",
-        adress: "Lohore, Pakistan",
-        isLike: false,
-        rating: 4.7,
-        isFavourite: false,
-        isWifi: true,
-        isbreastFast: true,
-        description:
-            "The luxury with pool Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
-        imagePreview: [
-          Image.asset("assets/images/05-The-Pa.jpg"),
-          Image.asset("assets/images/05-The-Pa.jpg"),
-          Image.asset("assets/images/05-The-Pa.jpg"),
-          Image.asset("assets/images/05-The-Pa.jpg"),
-        ]),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -391,11 +300,11 @@ class _ExploreState extends State<Explore> {
                           NearbyLocation near = nearby[index];
                           return InkWell(
                             onTap: () {
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) =>
-                              //             DetailHotel(nearby: near)));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          DetailHotel(nearby: near)));
                             },
                             child: Container(
                               height: 290,
@@ -507,30 +416,4 @@ class _ExploreState extends State<Explore> {
       ),
     );
   }
-}
-
-class NearbyLocation {
-  String name;
-  double rating;
-  Image mainImage;
-  String price;
-  bool isLike;
-  String adress;
-  bool isWifi;
-  bool isbreastFast;
-  String description;
-  List<Image> imagePreview;
-  bool isFavourite;
-  NearbyLocation(
-      {required this.name,
-      required this.mainImage,
-      required this.rating,
-      required this.imagePreview,
-      required this.isLike,
-      required this.price,
-      required this.adress,
-      required this.isWifi,
-      required this.isbreastFast,
-      required this.description,
-      required this.isFavourite});
 }
