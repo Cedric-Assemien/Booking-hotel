@@ -14,7 +14,7 @@ class navigationBar extends StatefulWidget {
   State<navigationBar> createState() => _navigationBarState();
 }
 
-Color mainColor = Color.fromARGB(255, 7, 0, 139);
+Color mainColor = Color(0xff0c3b2e);
 
 class _navigationBarState extends State<navigationBar> {
   int _selectedIndex = 0;

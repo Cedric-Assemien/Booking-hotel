@@ -21,7 +21,6 @@ class _HomePageState extends State<HomePage> {
     "Abidjan, CI",
     "Dakar,Senegal",
     "Paris,france",
-    "New York,USA",
   ];
   int searchProperty = 0;
  
@@ -359,7 +358,8 @@ class _HomePageState extends State<HomePage> {
                                 Positioned(
                                   top: 12,
                                   right: 10,
-                                  child: Container(
+                                  child: 
+                                  Container(
                                     height: 35,
                                     width: 35,
                                     decoration: BoxDecoration(
