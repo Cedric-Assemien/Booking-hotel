@@ -372,7 +372,7 @@ class _SigninPageState extends State<SigninPage> {
                                       return null;
                                     },
                                     decoration: InputDecoration(
-                                        hintText: "Entrer votre Email",
+                                        hintText: "Enter your email",
                                         border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(30),
@@ -406,7 +406,7 @@ class _SigninPageState extends State<SigninPage> {
                                       return null;
                                     },
                                     decoration: InputDecoration(
-                                        hintText: "Entrer votre mot de passe",
+                                        hintText: "Enter your password",
                                         border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(30),

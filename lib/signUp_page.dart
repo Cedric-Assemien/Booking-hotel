@@ -136,7 +136,7 @@ class _SignupPageState extends State<SignupPage> {
                                       return null;
                                     },
                                     decoration: InputDecoration(
-                                        hintText: "Entrer votre Email",
+                                        hintText: "Enter your email",
                                         border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(30),
@@ -170,7 +170,7 @@ class _SignupPageState extends State<SignupPage> {
                                     },
                                     decoration: InputDecoration(
                                       hintText:
-                                          "Entrer votre nom d'utilisateur",
+                                          "Enter your username",
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(30),
                                         borderSide: BorderSide.none,
@@ -207,7 +207,7 @@ class _SignupPageState extends State<SignupPage> {
                                       return null;
                                     },
                                     decoration: InputDecoration(
-                                        hintText: "Entrer votre mot de passe",
+                                        hintText: "Enter your password",
                                         border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(30),

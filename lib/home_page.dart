@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:booking_hotel/detail_hotel.dart';
 import 'package:booking_hotel/list_proprety.dart';
 import 'package:booking_hotel/navigation_bar.dart';
@@ -23,7 +25,7 @@ class _HomePageState extends State<HomePage> {
     "Paris,france",
   ];
   int searchProperty = 0;
- 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -342,119 +344,120 @@ class _HomePageState extends State<HomePage> {
                             ],
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(20),
+                            image: DecorationImage(
+                                fit: BoxFit.cover, image: near.mainImage.image),
                           ),
-                          child: Column(children: [
-                            Container(
-                              height: 200,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(20),
-                                    topRight: Radius.circular(20)),
-                                image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: near.mainImage.image),
-                              ),
-                              child: Stack(children: [
-                                Positioned(
-                                  top: 12,
-                                  right: 10,
-                                  child: 
-                                  Container(
-                                    height: 35,
-                                    width: 35,
+                          child: Stack(children: [
+                            Positioned(
+                              bottom: 5,
+                              left: 8,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: BackdropFilter(
+                                  filter: ImageFilter.blur(
+                                    sigmaX: 10,
+                                    sigmaY: 10,
+                                  ),
+                                  child: Container(
+                                    height: 100,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.7,
                                     decoration: BoxDecoration(
-                                        color: Colors.white,
+                                        color: mainColor.withOpacity(0.5),
                                         borderRadius:
-                                            BorderRadius.circular(50)),
-                                    child: InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          near.isLike = !near.isLike;
-                                        });
-                                      },
-                                      child: near.isLike == false
-                                          ? const Icon(
-                                              Iconsax.heart,
-                                              color: Colors.black,
-                                            )
-                                          : const Icon(
-                                              Iconsax.heart5,
-                                              color: Colors.pink,
-                                            ),
+                                            BorderRadius.circular(20)),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          margin: const EdgeInsets.all(10),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                near.name,
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Row(children: [
+                                                Icon(
+                                                  CupertinoIcons.star_fill,
+                                                  size: 16,
+                                                  color: Colors.amber,
+                                                ),
+                                                SizedBox(
+                                                  width: 2,
+                                                ),
+                                                Text(near.rating.toString(),
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 13)),
+                                              ]),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Icon(
+                                                Iconsax.location,
+                                                color: Colors.white,
+                                              ),
+                                              SizedBox(
+                                                width: 5,
+                                              ),
+                                              Text(
+                                                near.adress,
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 14),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 195, bottom: 10, top: 5),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              RichText(
+                                                text: TextSpan(
+                                                    text: "\$${near.price}"
+                                                        .toString(),
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 16),
+                                                    children: [
+                                                      TextSpan(
+                                                        text: " /night",
+                                                        style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                            fontSize: 15),
+                                                      )
+                                                    ]),
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      ],
                                     ),
                                   ),
-                                )
-                              ]),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.all(10),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    near.name,
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  Row(children: [
-                                    Icon(
-                                      CupertinoIcons.star_fill,
-                                      size: 16,
-                                      color: Colors.amber,
-                                    ),
-                                    SizedBox(
-                                      width: 2,
-                                    ),
-                                    Text(near.rating.toString(),
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 13)),
-                                  ]),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Icon(Iconsax.location),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    near.adress,
-                                    style: TextStyle(
-                                        color: Colors.grey, fontSize: 14),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 195, bottom: 10, top: 5),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  RichText(
-                                    text: TextSpan(
-                                        text: near.price,
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16),
-                                        children: [
-                                          TextSpan(
-                                            text: " /night",
-                                            style: TextStyle(
-                                                color: Colors.grey,
-                                                fontWeight: FontWeight.normal,
-                                                fontSize: 15),
-                                          )
-                                        ]),
-                                  ),
-                                ],
+                                ),
                               ),
                             )
                           ]),
@@ -593,4 +596,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
