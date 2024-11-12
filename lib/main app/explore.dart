@@ -19,13 +19,6 @@ class _ExploreState extends State<Explore> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Explore the map",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-      ),
       body: Stack(
         children: [
           Container(
@@ -37,252 +30,278 @@ class _ExploreState extends State<Explore> {
             ),
           ),
           Positioned(
-            top: 10,
-            left: 10,
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.9,
-              height: 200,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15),
-                    child: Card(
-                      color: Colors.transparent,
-                      elevation: 10,
-                      child: TextFormField(
-                        keyboardType: TextInputType.text,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "remplissez les champs";
-                          } else {
-                            FocusScope.of(context).unfocus();
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                            hintText: "Enter your destination",
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide.none,
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide(color: mainColor),
-                            ),
-                            filled: true,
-                            fillColor: Colors.white,
-                            prefixIcon: Icon(Iconsax.search_normal_1)),
-                      ),
+            top: 50,
+            left: 1,
+            child: Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 0, left: 20, bottom: 10),
+                  height: 48,
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  decoration: BoxDecoration(
+                    color: mainColor,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Center(
+                    child: const Text(
+                      "explore map",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
                   ),
-                  Row(children: [
-                    InkWell(
-                        onTap: () {
-                          setState(() {
-                            searchProperty = 0;
-                          });
-                        },
-                        child: searchProperty == 0
-                            ? Container(
-                                margin:
-                                    const EdgeInsets.fromLTRB(20, 10, 20, 10),
-                                padding: const EdgeInsets.only(left: 8),
-                                height: 35,
-                                width: 95,
-                                decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.5),
-                                      spreadRadius: 1,
-                                      blurRadius: 5,
-                                      offset: const Offset(0, 5),
-                                    )
-                                  ],
-                                  color: mainColor,
-                                  borderRadius: BorderRadius.circular(10),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: 200,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15),
+                        child: Card(
+                          color: Colors.transparent,
+                          elevation: 10,
+                          child: TextFormField(
+                            keyboardType: TextInputType.text,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "remplissez les champs";
+                              } else {
+                                FocusScope.of(context).unfocus();
+                              }
+                              return null;
+                            },
+                            decoration: InputDecoration(
+                                hintText: "Enter your destination",
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                  borderSide: BorderSide.none,
                                 ),
-                                child: const Row(children: [
-                                  Icon(Icons.home_outlined,
-                                      color: Colors.white),
-                                  SizedBox(
-                                    width: 3,
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                  borderSide: BorderSide(color: mainColor),
+                                ),
+                                filled: true,
+                                fillColor: Colors.white,
+                                prefixIcon: Icon(Iconsax.search_normal_1)),
+                          ),
+                        ),
+                      ),
+                      Row(children: [
+                        InkWell(
+                            onTap: () {
+                              setState(() {
+                                searchProperty = 0;
+                              });
+                            },
+                            child: searchProperty == 0
+                                ? Container(
+                                    margin: const EdgeInsets.fromLTRB(
+                                        20, 10, 20, 10),
+                                    padding: const EdgeInsets.only(left: 8),
+                                    height: 35,
+                                    width: 95,
+                                    decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          spreadRadius: 1,
+                                          blurRadius: 5,
+                                          offset: const Offset(0, 5),
+                                        )
+                                      ],
+                                      color: mainColor,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: const Row(children: [
+                                      Icon(Icons.home_outlined,
+                                          color: Colors.white),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Text(
+                                        "Hotel",
+                                        style: TextStyle(color: Colors.white),
+                                      )
+                                    ]),
+                                  )
+                                : Container(
+                                    margin: const EdgeInsets.fromLTRB(
+                                        20, 10, 20, 10),
+                                    padding: const EdgeInsets.only(left: 8),
+                                    height: 35,
+                                    width: 95,
+                                    decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          spreadRadius: 1,
+                                          blurRadius: 5,
+                                          offset: const Offset(0, 5),
+                                        )
+                                      ],
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: const Row(children: [
+                                      Icon(Icons.home_outlined,
+                                          color: Colors.grey),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Text(
+                                        "Hotel",
+                                        style: TextStyle(color: Colors.grey),
+                                      )
+                                    ]),
+                                  )),
+                        InkWell(
+                            onTap: () {
+                              setState(() {
+                                searchProperty = 1;
+                              });
+                            },
+                            child: searchProperty == 1
+                                ? Container(
+                                    margin: const EdgeInsets.fromLTRB(
+                                        0, 10, 20, 10),
+                                    padding: const EdgeInsets.only(left: 8),
+                                    height: 35,
+                                    width: 120,
+                                    decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          spreadRadius: 1,
+                                          blurRadius: 5,
+                                          offset: const Offset(0, 5),
+                                        )
+                                      ],
+                                      color: mainColor,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: const Row(children: [
+                                      Icon(Icons.home_work_rounded,
+                                          color: Colors.white),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Text(
+                                        "Residence",
+                                        style: TextStyle(color: Colors.white),
+                                      )
+                                    ]),
+                                  )
+                                : Container(
+                                    margin: const EdgeInsets.fromLTRB(
+                                        0, 10, 20, 10),
+                                    padding: const EdgeInsets.only(left: 8),
+                                    height: 35,
+                                    width: 120,
+                                    decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          spreadRadius: 1,
+                                          blurRadius: 5,
+                                          offset: const Offset(0, 5),
+                                        )
+                                      ],
+                                      color: const Color.fromARGB(
+                                          255, 255, 255, 255),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: const Row(children: [
+                                      Icon(Icons.home_work_rounded,
+                                          color: Colors.grey),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Text(
+                                        "Residence",
+                                        style: TextStyle(color: Colors.grey),
+                                      )
+                                    ]),
+                                  )),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              searchProperty = 2;
+                            });
+                          },
+                          child: searchProperty == 2
+                              ? Container(
+                                  margin:
+                                      const EdgeInsets.fromLTRB(0, 15, 20, 10),
+                                  padding: const EdgeInsets.only(left: 8),
+                                  height: 35,
+                                  width: 115,
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.5),
+                                        spreadRadius: 1,
+                                        blurRadius: 5,
+                                        offset: const Offset(0, 5),
+                                      )
+                                    ],
+                                    color: mainColor,
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
-                                  Text(
-                                    "Hotel",
-                                    style: TextStyle(color: Colors.white),
-                                  )
-                                ]),
-                              )
-                            : Container(
-                                margin:
-                                    const EdgeInsets.fromLTRB(20, 10, 20, 10),
-                                padding: const EdgeInsets.only(left: 8),
-                                height: 35,
-                                width: 95,
-                                decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.5),
-                                      spreadRadius: 1,
-                                      blurRadius: 5,
-                                      offset: const Offset(0, 5),
+                                  child: Row(children: [
+                                    Icon(Boxicons.bxs_building_house,
+                                        color: Colors.white),
+                                    SizedBox(
+                                      width: 3,
+                                    ),
+                                    Text(
+                                      "Penthouse",
+                                      style: TextStyle(color: Colors.white),
                                     )
-                                  ],
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: const Row(children: [
-                                  Icon(Icons.home_outlined, color: Colors.grey),
-                                  SizedBox(
-                                    width: 3,
-                                  ),
-                                  Text(
-                                    "Hotel",
-                                    style: TextStyle(color: Colors.grey),
-                                  )
-                                ]),
-                              )),
-                    InkWell(
-                        onTap: () {
-                          setState(() {
-                            searchProperty = 1;
-                          });
-                        },
-                        child: searchProperty == 1
-                            ? Container(
-                                margin:
-                                    const EdgeInsets.fromLTRB(0, 10, 20, 10),
-                                padding: const EdgeInsets.only(left: 8),
-                                height: 35,
-                                width: 120,
-                                decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.5),
-                                      spreadRadius: 1,
-                                      blurRadius: 5,
-                                      offset: const Offset(0, 5),
-                                    )
-                                  ],
-                                  color: mainColor,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: const Row(children: [
-                                  Icon(Icons.home_work_rounded,
-                                      color: Colors.white),
-                                  SizedBox(
-                                    width: 3,
-                                  ),
-                                  Text(
-                                    "Residence",
-                                    style: TextStyle(color: Colors.white),
-                                  )
-                                ]),
-                              )
-                            : Container(
-                                margin:
-                                    const EdgeInsets.fromLTRB(0, 10, 20, 10),
-                                padding: const EdgeInsets.only(left: 8),
-                                height: 35,
-                                width: 120,
-                                decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.5),
-                                      spreadRadius: 1,
-                                      blurRadius: 5,
-                                      offset: const Offset(0, 5),
-                                    )
-                                  ],
-                                  color:
-                                      const Color.fromARGB(255, 255, 255, 255),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: const Row(children: [
-                                  Icon(Icons.home_work_rounded,
-                                      color: Colors.grey),
-                                  SizedBox(
-                                    width: 3,
-                                  ),
-                                  Text(
-                                    "Residence",
-                                    style: TextStyle(color: Colors.grey),
-                                  )
-                                ]),
-                              )),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          searchProperty = 2;
-                        });
-                      },
-                      child: searchProperty == 2
-                          ? Container(
-                              margin: const EdgeInsets.fromLTRB(0, 15, 20, 10),
-                              padding: const EdgeInsets.only(left: 8),
-                              height: 35,
-                              width: 115,
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.5),
-                                    spreadRadius: 1,
-                                    blurRadius: 5,
-                                    offset: const Offset(0, 5),
-                                  )
-                                ],
-                                color: mainColor,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Row(children: [
-                                Icon(Boxicons.bxs_building_house,
-                                    color: Colors.white),
-                                SizedBox(
-                                  width: 3,
-                                ),
-                                Text(
-                                  "Penthouse",
-                                  style: TextStyle(color: Colors.white),
+                                  ]),
                                 )
-                              ]),
-                            )
-                          : Container(
-                              margin: const EdgeInsets.fromLTRB(0, 15, 20, 10),
-                              padding: const EdgeInsets.only(left: 8),
-                              height: 35,
-                              width: 115,
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.5),
-                                    spreadRadius: 1,
-                                    blurRadius: 5,
-                                    offset: const Offset(0, 5),
-                                  )
-                                ],
-                                color: const Color.fromARGB(255, 254, 254, 254),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Row(children: [
-                                Icon(Boxicons.bxs_building_house,
-                                    color: Colors.grey),
-                                SizedBox(
-                                  width: 3,
+                              : Container(
+                                  margin:
+                                      const EdgeInsets.fromLTRB(0, 15, 20, 10),
+                                  padding: const EdgeInsets.only(left: 8),
+                                  height: 35,
+                                  width: 115,
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.5),
+                                        spreadRadius: 1,
+                                        blurRadius: 5,
+                                        offset: const Offset(0, 5),
+                                      )
+                                    ],
+                                    color: const Color.fromARGB(
+                                        255, 254, 254, 254),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Row(children: [
+                                    Icon(Boxicons.bxs_building_house,
+                                        color: Colors.grey),
+                                    SizedBox(
+                                      width: 3,
+                                    ),
+                                    Text(
+                                      "Penthouse",
+                                      style: TextStyle(color: Colors.grey),
+                                    )
+                                  ]),
                                 ),
-                                Text(
-                                  "Penthouse",
-                                  style: TextStyle(color: Colors.grey),
-                                )
-                              ]),
-                            ),
-                    )
-                  ]),
-                ],
-              ),
+                        )
+                      ]),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
           Positioned(
-              bottom: 10,
+              bottom: 55,
               child: Row(
                 children: [
                   SizedBox(

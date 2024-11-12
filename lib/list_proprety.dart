@@ -1,3 +1,7 @@
+import 'package:booking_hotel/setting/Help_support.dart';
+import 'package:booking_hotel/setting/account.dart';
+import 'package:booking_hotel/setting/credit_cart.dart';
+import 'package:booking_hotel/setting/privacy_security.dart';
 import 'package:flutter/material.dart';
 
 class NearbyLocation {
@@ -46,6 +50,18 @@ class PopularLocation {
       required this.isbreastFast,
       required this.description,
       required this.isFavourite});
+}
+
+class Settinglist {
+  String name;
+  IconData startIcon;
+
+  Widget destination;
+  Settinglist(
+      {required this.name,
+      required this.startIcon,
+    
+      required this.destination});
 }
 
 List<NearbyLocation> nearby = [
@@ -184,4 +200,12 @@ List<PopularLocation> popular = [
         Image.asset("assets/images/type de chambre par agencement.webp"),
         Image.asset("assets/images/type de chambre par agencement.webp"),
       ]),
+];
+
+List<Settinglist> settingAll = [
+  Settinglist(name: "Acccount",startIcon: Icons.person,destination:Account() ),
+  Settinglist(name: "credit card",startIcon: Icons.credit_card,destination:CreditCart() ),
+  Settinglist(name: "Help and support",startIcon: Icons.help_center,destination:HelpSupport() ),
+  Settinglist(name: "Privacy & security",startIcon: Icons.security,destination:PrivacySecurity() ),
+ 
 ];
