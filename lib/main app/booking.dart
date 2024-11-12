@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:booking_hotel/chats/message_detail.dart';
+import 'package:booking_hotel/main%20app/home_page.dart';
 import 'package:booking_hotel/list_proprety.dart';
-import 'package:booking_hotel/navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 

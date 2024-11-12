@@ -1,6 +1,6 @@
-import 'package:booking_hotel/detail_hotel.dart';
+import 'package:booking_hotel/detail_page/detail_hotel.dart';
+import 'package:booking_hotel/main%20app/home_page.dart';
 import 'package:booking_hotel/list_proprety.dart';
-import 'package:booking_hotel/navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';

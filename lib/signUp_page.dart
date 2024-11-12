@@ -1,4 +1,4 @@
-import 'package:booking_hotel/navigation_bar.dart';
+import 'package:booking_hotel/main%20app/home_page.dart';
 import 'package:booking_hotel/signIn_page.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -239,7 +239,7 @@ class _SignupPageState extends State<SignupPage> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const navigationBar()));
+                                              const SigninPage()));
                                 },
                                 child: Text(
                                   "Sign up".toUpperCase(),

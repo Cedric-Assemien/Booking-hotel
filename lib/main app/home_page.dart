@@ -1,8 +1,7 @@
 import 'dart:ui';
 
-import 'package:booking_hotel/detail_hotel.dart';
+import 'package:booking_hotel/detail_page/detail_hotel.dart';
 import 'package:booking_hotel/list_proprety.dart';
-import 'package:booking_hotel/navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
@@ -16,7 +15,9 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+Color mainColor = Color(0xff0c3b2e);
 class _HomePageState extends State<HomePage> {
+  
   String selectLocation = "Select location";
   List<String> listLocation = [
     "lohore,Pakistan",

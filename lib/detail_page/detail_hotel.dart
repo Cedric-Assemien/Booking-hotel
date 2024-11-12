@@ -1,12 +1,7 @@
-// ignore_for_file: camel_case_types
-
 import 'dart:ui';
-
+import 'package:booking_hotel/main%20app/home_page.dart';
 import 'package:booking_hotel/list_proprety.dart';
-import 'package:booking_hotel/navigation_bar.dart';
 import 'package:flutter/material.dart';
-// ignore: unnecessary_import
-import 'package:flutter/widgets.dart';
 import 'package:icofont_flutter/icofont_flutter.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';

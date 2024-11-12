@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
-import 'package:booking_hotel/navigation_bar.dart';
+import 'package:booking_hotel/bottom_bar/floating_bottom_bar.dart';
+import 'package:booking_hotel/main%20app/home_page.dart';
 import 'package:booking_hotel/signUp_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -454,7 +455,7 @@ class _SigninPageState extends State<SigninPage> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const navigationBar()));
+                                               FloatingBottomBar(title: "name",)));
                                 },
                                 child: Text(
                                   "Sign in".toUpperCase(),
