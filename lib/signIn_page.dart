@@ -444,7 +444,7 @@ class _SigninPageState extends State<SigninPage> {
                           Center(
                             child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  fixedSize: Size(150, 50),
+                                  fixedSize: const Size(350, 60),
                                   elevation: 10,
                                   backgroundColor: mainColor,
                                   foregroundColor: Colors.white,

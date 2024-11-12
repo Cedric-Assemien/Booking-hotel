@@ -169,8 +169,7 @@ class _SignupPageState extends State<SignupPage> {
                                       return null;
                                     },
                                     decoration: InputDecoration(
-                                      hintText:
-                                          "Enter your username",
+                                      hintText: "Enter your username",
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(30),
                                         borderSide: BorderSide.none,
@@ -235,7 +234,13 @@ class _SignupPageState extends State<SignupPage> {
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: mainColor,
                                     fixedSize: const Size(350, 60)),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const navigationBar()));
+                                },
                                 child: Text(
                                   "Sign up".toUpperCase(),
                                   style: const TextStyle(
