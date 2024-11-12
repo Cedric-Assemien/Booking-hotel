@@ -1,6 +1,7 @@
 import 'package:booking_hotel/list_proprety.dart';
 import 'package:booking_hotel/main%20app/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class Setting extends StatefulWidget {
   const Setting({super.key});
@@ -10,6 +11,8 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
+  bool lockBio = false;
+  bool darkMode = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +55,78 @@ class _SettingState extends State<Setting> {
           ]),
         ),
         const SizedBox(
+          height: 10,
+        ),
+        Card(
+          color: Colors.transparent,
+          elevation: 10,
+          shadowColor: Colors.black38,
+          child: Container(
+            height: 70,
+            width: MediaQuery.of(context).size.width * 0.9,
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(20)),
+            child: Row(
+              children: [
+                const SizedBox(
+                  width: 20,
+                ),
+                Icon(MdiIcons.fingerprint),
+                const SizedBox(
+                  width: 10,
+                ),
+                const Text(
+                  "FaceID",
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Switch(
+                    activeColor: mainColor,
+                    inactiveThumbColor: mainColor,
+                    inactiveTrackColor: Colors.white,
+                    value: lockBio,
+                    onChanged: (value) {
+                      setState(() {
+                        lockBio = value;
+                      });
+                    }),
+                const SizedBox(
+                  width: 5,
+                ),
+                const SizedBox(
+                  child: VerticalDivider(
+                    color: Colors.black,
+                    thickness: 2,
+                    indent: 15,
+                    endIndent: 15,
+                  ),
+                ),
+                Icon(MdiIcons.themeLightDark),
+                const SizedBox(
+                  width: 10,
+                ),
+                const Text(
+                  "DarkMode",
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Switch(
+                    activeColor: mainColor,
+                    inactiveThumbColor: mainColor,
+                    inactiveTrackColor: Colors.white,
+                    value: darkMode,
+                    onChanged: (value) {
+                      setState(() {
+                        darkMode = value;
+                      });
+                    }),
+              ],
+            ),
+          ),
+        ),
+        SizedBox(
           height: 10,
         ),
         Center(
