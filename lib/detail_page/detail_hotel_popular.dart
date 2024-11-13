@@ -6,15 +6,45 @@ import 'package:icofont_flutter/icofont_flutter.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class DetailHotel extends StatefulWidget {
-  final NearbyLocation nearby;
-  const DetailHotel({super.key, required this.nearby});
+class DetailHotelPopular extends StatefulWidget {
+  final PopularLocation popular;
+
+  const DetailHotelPopular({super.key, required this.popular});
 
   @override
-  State<DetailHotel> createState() => _DetailHotelState();
+  State<DetailHotelPopular> createState() => _DetailHotelPopularState();
 }
 
-class _DetailHotelState extends State<DetailHotel> {
+class _DetailHotelPopularState extends State<DetailHotelPopular> {
+  DateTime dateCheckIn = DateTime.now();
+  DateTime dateCheckOut = DateTime.now();
+  Future<void> selectTimeCheckIn(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        firstDate: DateTime(2024),
+        lastDate: DateTime(3000),
+        initialDate: dateCheckIn);
+
+    if (picked != null && picked != dateCheckIn) {
+      setState(() {
+        dateCheckIn = picked;
+      });
+    }
+  }
+
+  Future<void> selectTimeCheckOut(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        firstDate: DateTime(2024),
+        lastDate: DateTime(3000),
+        initialDate: dateCheckOut);
+    if (picked != null && picked != dateCheckOut) {
+      setState(() {
+        dateCheckOut = picked;
+      });
+    }
+  }
+
   bool extenDescrip = false;
   void _toggleDescription() {
     setState(() {
@@ -38,132 +68,141 @@ class _DetailHotelState extends State<DetailHotel> {
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ),
-              content: Column(
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: 50,
-                        width: 130,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Iconsax.calendar_1,
-                              color: Colors.black,
+              content: StatefulBuilder(
+                  builder: (BuildContext context, StateSetter setState) {
+                return Column(
+                  children: [
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              selectTimeCheckIn(context);
+                            });
+                          },
+                          child: Container(
+                            height: 50,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
                             ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                            child: Row(
                               children: [
-                                Text(
-                                  "Check-in",
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black54,
-                                  ),
+                                Icon(
+                                  Iconsax.calendar_1,
+                                  color: Colors.black,
                                 ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Text(
-                                    "11/11/2024",
-                                    style: TextStyle(
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Check-in",
+                                      style: TextStyle(
                                         fontSize: 15,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Container(
-                        height: 50,
-                        width: 130,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Iconsax.calendar_1,
-                              color: Colors.black,
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Check-out",
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black54,
-                                  ),
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Text(
-                                    "11/11/2024",
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
+                                        color: Colors.black54,
+                                      ),
+                                    ),
+                                    Text(
+                                      "${dateCheckIn.year} /${dateCheckIn.month} /${dateCheckIn.day}",
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                )
                               ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        side: const BorderSide(color: Colors.white, width: 3),
-                        fixedSize: const Size(200, 50),
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text(
-                        "Check",
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.white,
-                            fontFamily: 'baloo'),
-                      )),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(
-                        MdiIcons.closeCircle,
-                        size: 35,
-                        color: Colors.red,
-                      ))
-                ],
-              ));
+                        SizedBox(
+                          width: 10,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            selectTimeCheckOut(context);
+                          },
+                          child: Container(
+                            height: 50,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Iconsax.calendar_1,
+                                  color: Colors.black,
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Check-out",
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.black54,
+                                      ),
+                                    ),
+                                    Text(
+                                      "${dateCheckOut.year} /${dateCheckOut.month} /${dateCheckOut.day} ",
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          side: const BorderSide(color: Colors.white, width: 3),
+                          fixedSize: const Size(200, 50),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text(
+                          "Check",
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                              fontFamily: 'baloo'),
+                        )),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(
+                          MdiIcons.closeCircle,
+                          size: 35,
+                          color: Colors.red,
+                        ))
+                  ],
+                );
+              }));
         });
   }
 
@@ -180,7 +219,8 @@ class _DetailHotelState extends State<DetailHotel> {
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      fit: BoxFit.cover, image: widget.nearby.mainImage.image)),
+                      fit: BoxFit.cover,
+                      image: widget.popular.mainImage.image)),
               child: Stack(children: [
                 Positioned(
                   top: 40,
@@ -216,10 +256,10 @@ class _DetailHotelState extends State<DetailHotel> {
                           child: InkWell(
                             onTap: () {
                               setState(() {
-                                widget.nearby.isLike = !widget.nearby.isLike;
+                                widget.popular.isLike = !widget.popular.isLike;
                               });
                             },
-                            child: widget.nearby.isLike == false
+                            child: widget.popular.isLike == false
                                 ? const Icon(
                                     Iconsax.heart,
                                     color: Colors.black,
@@ -258,7 +298,7 @@ class _DetailHotelState extends State<DetailHotel> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    widget.nearby.name,
+                                    widget.popular.name,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 16,
@@ -266,7 +306,7 @@ class _DetailHotelState extends State<DetailHotel> {
                                   ),
                                   Text.rich(
                                     TextSpan(
-                                        text: "\$${widget.nearby.price}",
+                                        text: "\$${widget.popular.price}",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 16,
@@ -289,7 +329,7 @@ class _DetailHotelState extends State<DetailHotel> {
                               scrollDirection: Axis.horizontal,
                               child: Row(
                                 children: List.generate(
-                                  widget.nearby.imagePreview.length,
+                                  widget.popular.imagePreview.length,
                                   (index) => Container(
                                     height: 80,
                                     width: 120,
@@ -300,7 +340,7 @@ class _DetailHotelState extends State<DetailHotel> {
                                       image: DecorationImage(
                                         fit: BoxFit.cover,
                                         image: widget
-                                            .nearby.imagePreview[index].image,
+                                            .popular.imagePreview[index].image,
                                       ),
                                     ),
                                   ),
@@ -363,7 +403,7 @@ class _DetailHotelState extends State<DetailHotel> {
                             ),
                             child: Center(
                               child: Text(
-                                widget.nearby.rating.toString(),
+                                widget.popular.rating.toString(),
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -382,7 +422,7 @@ class _DetailHotelState extends State<DetailHotel> {
                           width: 5,
                         ),
                         Text(
-                          widget.nearby.adress,
+                          widget.popular.adress,
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 18,
@@ -405,7 +445,7 @@ class _DetailHotelState extends State<DetailHotel> {
                               fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          widget.nearby.description,
+                          widget.popular.description,
                           style: const TextStyle(
                               fontSize: 14, color: Colors.white),
                           maxLines: extenDescrip ? null : 2,

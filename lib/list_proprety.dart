@@ -14,7 +14,7 @@ class NearbyLocation {
 
   String description;
   List<Image> imagePreview;
-  bool isFavourite;
+ 
   NearbyLocation(
       {required this.name,
       required this.mainImage,
@@ -24,7 +24,7 @@ class NearbyLocation {
       required this.price,
       required this.adress,
       required this.description,
-      required this.isFavourite});
+    });
 }
 
 class PopularLocation {
@@ -38,7 +38,7 @@ class PopularLocation {
   bool isbreastFast;
   String description;
   List<Image> imagePreview;
-  bool isFavourite;
+  bool isLike;
   PopularLocation(
       {required this.name,
       required this.mainImage,
@@ -49,7 +49,7 @@ class PopularLocation {
       required this.isWifi,
       required this.isbreastFast,
       required this.description,
-      required this.isFavourite});
+      required this.isLike});
 }
 
 class Settinglist {
@@ -72,7 +72,7 @@ List<NearbyLocation> nearby = [
       adress: "Lohore, Pakistan",
       rating: 4.5,
       isLike: false,
-      isFavourite: false,
+     
       description:
           "The luxury hotel with pool Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
       imagePreview: [
@@ -88,7 +88,7 @@ List<NearbyLocation> nearby = [
       adress: "abidjan,CI",
       isLike: true,
       rating: 4.5,
-      isFavourite: false,
+     
       description:
           "The luxury residence with pool Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
       imagePreview: [
@@ -104,7 +104,7 @@ List<NearbyLocation> nearby = [
       adress: "Dakar,senegal",
       isLike: false,
       rating: 3.0,
-      isFavourite: false,
+     
       description:
           "The palace with pool .Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
       imagePreview: [
@@ -120,7 +120,7 @@ List<NearbyLocation> nearby = [
       adress: "dubai, UAE",
       isLike: true,
       rating: 4.5,
-      isFavourite: false,
+     
       description:
           "The manoir with pool Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
       imagePreview: [
@@ -136,7 +136,7 @@ List<NearbyLocation> nearby = [
       adress: "Lohore, Pakistan",
       isLike: false,
       rating: 4.7,
-      isFavourite: false,
+     
       description:
           "The luxury with pool Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
       imagePreview: [
@@ -154,7 +154,7 @@ List<PopularLocation> popular = [
       price: " 199.9",
       adress: "westhal, PK",
       rating: 5.0,
-      isFavourite: false,
+     isLike: false,
       isWifi: true,
       isbreastFast: true,
       description:
@@ -171,7 +171,7 @@ List<PopularLocation> popular = [
       price: " 300",
       adress: "new york, USA",
       rating: 5.0,
-      isFavourite: false,
+      isLike: false,
       isWifi: true,
       isbreastFast: true,
       description:
@@ -189,7 +189,7 @@ List<PopularLocation> popular = [
       price: " 400",
       adress: "Bassam,CI",
       rating: 4.0,
-      isFavourite: false,
+      isLike: false,
       isWifi: true,
       isbreastFast: true,
       description:

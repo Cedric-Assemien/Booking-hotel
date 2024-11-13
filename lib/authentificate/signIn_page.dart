@@ -2,7 +2,7 @@
 
 import 'package:booking_hotel/bottom_bar/floating_bottom_bar.dart';
 import 'package:booking_hotel/main%20app/home_page.dart';
-import 'package:booking_hotel/signUp_page.dart';
+import 'package:booking_hotel/authentificate/signUp_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';

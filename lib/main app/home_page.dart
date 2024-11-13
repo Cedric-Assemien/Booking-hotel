@@ -1,9 +1,9 @@
 import 'dart:ui';
 
-import 'package:booking_hotel/detail_page/detail_hotel.dart';
+import 'package:booking_hotel/detail_page/detail_hotel_nearby.dart';
+import 'package:booking_hotel/detail_page/detail_hotel_popular.dart';
 import 'package:booking_hotel/list_proprety.dart';
 import 'package:flutter/cupertino.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';
 import 'package:iconsax/iconsax.dart';
@@ -327,7 +327,7 @@ class _HomePageState extends State<HomePage> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      DetailHotel(nearby: near)));
+                                      DetailHotelNearby(nearby: near)));
                         },
                         child: Container(
                           height: 290,
@@ -487,107 +487,115 @@ class _HomePageState extends State<HomePage> {
               ),
               Column(
                 children: popular.map((pop) {
-                  return Container(
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
-                      height: 120,
-                      width: MediaQuery.of(context).size.width * 0.90,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey.withOpacity(0.3),
-                                blurRadius: 2),
-                          ]),
-                      child: Row(children: [
-                        Container(
-                          margin: const EdgeInsets.only(left: 10),
-                          height: 100,
-                          width: 100,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                                fit: BoxFit.cover, image: pop.mainImage.image),
+                  return InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailHotelPopular(popular: pop,)));
+                    },
+                    child: Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
+                        height: 120,
+                        width: MediaQuery.of(context).size.width * 0.90,
+                        decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.withOpacity(0.3),
+                                  blurRadius: 2),
+                            ]),
+                        child: Row(children: [
+                          Container(
+                            margin: const EdgeInsets.only(left: 10),
+                            height: 100,
+                            width: 100,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.cover, image: pop.mainImage.image),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.all(10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    pop.name,
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  SizedBox(
-                                    width: 40,
-                                  ),
-                                  Text.rich(
-                                    TextSpan(
-                                        text: pop.price,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                        children: [
-                                          TextSpan(
-                                            text: "/night",
-                                            style: TextStyle(
-                                                color: Colors.grey,
-                                                fontWeight: FontWeight.normal,
-                                                fontSize: 15),
-                                          )
-                                        ]),
-                                  ),
-                                ],
-                              ),
-                              Row(children: [
-                                Text(
-                                  pop.adress,
-                                  style: TextStyle(color: Colors.grey),
-                                ),
-                              ]),
-                              Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                          Container(
+                            margin: const EdgeInsets.all(10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Row(
                                   children: [
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.yellow,
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.yellow,
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.yellow,
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.yellow,
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.yellow,
+                                    Text(
+                                      pop.name,
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                     SizedBox(
-                                      width: 10,
+                                      width: 40,
                                     ),
-                                    Text(
-                                      pop.rating.toString(),
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ]),
-                            ],
+                                    Text.rich(
+                                      TextSpan(
+                                          text: pop.price,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                          children: [
+                                            TextSpan(
+                                              text: "/night",
+                                              style: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontWeight: FontWeight.normal,
+                                                  fontSize: 15),
+                                            )
+                                          ]),
+                                    ),
+                                  ],
+                                ),
+                                Row(children: [
+                                  Text(
+                                    pop.adress,
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                ]),
+                                Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        Icons.star,
+                                        color: Colors.yellow,
+                                      ),
+                                      Icon(
+                                        Icons.star,
+                                        color: Colors.yellow,
+                                      ),
+                                      Icon(
+                                        Icons.star,
+                                        color: Colors.yellow,
+                                      ),
+                                      Icon(
+                                        Icons.star,
+                                        color: Colors.yellow,
+                                      ),
+                                      Icon(
+                                        Icons.star,
+                                        color: Colors.yellow,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        pop.rating.toString(),
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      )
+                                    ]),
+                              ],
+                            ),
                           ),
-                        ),
-                      ]));
+                        ])),
+                  );
                 }).toList(),
               )
             ],

@@ -1,4 +1,4 @@
-import 'package:booking_hotel/detail_page/detail_hotel.dart';
+import 'package:booking_hotel/detail_page/detail_hotel_nearby.dart';
 import 'package:booking_hotel/main%20app/home_page.dart';
 import 'package:booking_hotel/list_proprety.dart';
 import 'package:flutter/cupertino.dart';
@@ -323,7 +323,7 @@ class _ExploreState extends State<Explore> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          DetailHotel(nearby: near)));
+                                          DetailHotelNearby(nearby: near)));
                             },
                             child: Container(
                               height: 290,
