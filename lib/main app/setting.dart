@@ -203,6 +203,20 @@ class _SettingState extends State<Setting> {
         SizedBox(
           height: 20,
         ),
+        IconButton(
+            onPressed: () {
+              showModalBottomSheet(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return bottomSheetSAV(
+                      context,
+                    );
+                  });
+            },
+            icon: Icon(Icons.help, color: mainColor, size: 30)),
+        SizedBox(
+          height: 20,
+        ),
         ElevatedButton(
             style: ElevatedButton.styleFrom(
               elevation: 10,
