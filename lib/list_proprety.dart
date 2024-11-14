@@ -71,14 +71,14 @@ class Questions {
 
 List<NearbyLocation> nearby = [
   NearbyLocation(
-      name: "The luxury hotel with pool",
+      name: "The luxury hotel ",
       mainImage: Image.asset("assets/images/Cabecera_M.jpg"),
       price: "200",
       adress: "Lohore, Pakistan",
       rating: 4.5,
       isLike: false,
       description:
-          "The luxury hotel with pool Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
+          "The luxury hotel  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
       imagePreview: [
         Image.asset("assets/images/Cabecera_M.jpg"),
         Image.asset("assets/images/Cabecera_M.jpg"),
@@ -86,14 +86,14 @@ List<NearbyLocation> nearby = [
         Image.asset("assets/images/Cabecera_M.jpg"),
       ]),
   NearbyLocation(
-      name: "The luxury residence with pool",
+      name: "The luxury residence ",
       mainImage: Image.asset("assets/images/madbookies.jpg"),
       price: " 300",
       adress: "abidjan,CI",
       isLike: true,
       rating: 4.5,
       description:
-          "The luxury residence with pool Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
+          "The luxury residence  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
       imagePreview: [
         Image.asset("assets/images/madbookies.jpg"),
         Image.asset("assets/images/madbookies.jpg"),
@@ -101,14 +101,14 @@ List<NearbyLocation> nearby = [
         Image.asset("assets/images/madbookies.jpg"),
       ]),
   NearbyLocation(
-      name: "The palace with pool",
+      name: "The palace ",
       mainImage: Image.asset("assets/images/Palace5.jpg"),
       price: " 1000",
       adress: "Dakar,senegal",
       isLike: false,
       rating: 3.0,
       description:
-          "The palace with pool .Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
+          "The palace  .Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
       imagePreview: [
         Image.asset("assets/images/Palace5.jpg"),
         Image.asset("assets/images/Palace5.jpg"),
@@ -116,14 +116,14 @@ List<NearbyLocation> nearby = [
         Image.asset("assets/images/Palace5.jpg"),
       ]),
   NearbyLocation(
-      name: "The manoir with pool",
+      name: "The manoir ",
       mainImage: Image.asset("assets/images/hotels-luxe.jpg"),
       price: " 2000",
       adress: "dubai, UAE",
       isLike: true,
       rating: 4.5,
       description:
-          "The manoir with pool Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
+          "The manoir  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
       imagePreview: [
         Image.asset("assets/images/hotels-luxe.jpg"),
         Image.asset("assets/images/hotels-luxe.jpg"),
@@ -131,14 +131,14 @@ List<NearbyLocation> nearby = [
         Image.asset("assets/images/hotels-luxe.jpg"),
       ]),
   NearbyLocation(
-      name: "The luxury with pool",
+      name: "The luxury ",
       mainImage: Image.asset("assets/images/05-The-Pa.jpg"),
       price: " 800",
       adress: "Lohore, Pakistan",
       isLike: false,
       rating: 4.7,
       description:
-          "The luxury with pool Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
+          "The luxury  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.",
       imagePreview: [
         Image.asset("assets/images/05-The-Pa.jpg"),
         Image.asset("assets/images/05-The-Pa.jpg"),

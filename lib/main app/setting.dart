@@ -1,3 +1,7 @@
+import 'dart:math';
+import 'dart:ui';
+
+import 'package:booking_hotel/authentificate/signIn_page.dart';
 import 'package:booking_hotel/list_proprety.dart';
 import 'package:booking_hotel/main%20app/home_page.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +15,73 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
+  void dialogLogOut() {
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return BackdropFilter(
+          filter: ImageFilter.blur(
+            sigmaX: 5,
+            sigmaY: 5,
+          ),
+          child: AlertDialog(
+              insetPadding: const EdgeInsets.symmetric(horizontal: 40.0),
+              backgroundColor: mainColor.withOpacity(0.5),
+              title: const Center(
+                child: Text(
+                  'Do you really want to disconnect?',
+                  style: TextStyle(
+                      fontFamily: "baloo", color: Colors.white, fontSize: 18),
+                ),
+              ),
+              content: StatefulBuilder(
+                  builder: (BuildContext context, StateSetter setState) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        side: BorderSide(color: mainColor, width: 2),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text(
+                        "Cancel",
+                        style:
+                            TextStyle(fontFamily: "baloo", color: Colors.white),
+                      ),
+                    ),
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            elevation: 10,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            )),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SigninPage()));
+                        },
+                        child: const Text(
+                          "Confirm",
+                          style: TextStyle(
+                              fontFamily: "baloo", color: Colors.white),
+                        )),
+                  ],
+                );
+              })),
+        );
+      },
+    );
+  }
+
   bool lockBio = false;
   bool darkMode = false;
   @override
@@ -226,7 +297,7 @@ class _SettingState extends State<Setting> {
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
-            onPressed: () {},
+            onPressed: dialogLogOut,
             child: Text(
               "Log out",
               style: TextStyle(

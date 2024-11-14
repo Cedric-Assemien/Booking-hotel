@@ -3,6 +3,11 @@ import 'dart:ui';
 import 'package:booking_hotel/detail_page/detail_hotel_nearby.dart';
 import 'package:booking_hotel/detail_page/detail_hotel_popular.dart';
 import 'package:booking_hotel/list_proprety.dart';
+import 'package:booking_hotel/list_proprety.dart';
+import 'package:booking_hotel/main%20app/favorite.dart';
+import 'package:booking_hotel/main%20app/notification.dart';
+import 'package:booking_hotel/see%20all/nearby_see_all.dart';
+import 'package:booking_hotel/see%20all/popular_see_all.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';
@@ -16,8 +21,8 @@ class HomePage extends StatefulWidget {
 }
 
 Color mainColor = Color(0xff0c3b2e);
+
 class _HomePageState extends State<HomePage> {
-  
   String selectLocation = "Select location";
   List<String> listLocation = [
     "lohore,Pakistan",
@@ -30,21 +35,59 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white54,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Card(
-                color: Colors.transparent,
-                elevation: 10,
-                child: Container(
-                  height: 80,
-                  width: 80,
-                  decoration: BoxDecoration(
-                      color: mainColor,
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Image.asset("assets/images/easyStay.png"),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    height: 60,
+                    width: 60,
+                    margin: const EdgeInsets.only(right: 10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: const DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage("assets/images/image (2).jpg"))),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Welcome,",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: mainColor),
+                      ),
+                      Text(
+                        "Loverel dupont🖖",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: mainColor),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    width: 35,
+                  ),
+                  Card(
+                    color: Colors.transparent,
+                    elevation: 10,
+                    child: Container(
+                      height: 80,
+                      width: 80,
+                      decoration: BoxDecoration(
+                          color: mainColor,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Image.asset("assets/images/easyStay.png"),
+                    ),
+                  ),
+                ],
               ),
               Container(
                 margin: const EdgeInsets.fromLTRB(20, 5, 20, 0),
@@ -93,20 +136,51 @@ class _HomePageState extends State<HomePage> {
                         ]),
                       ]),
                   const Spacer(),
-                  Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              blurRadius: 5,
-                              spreadRadius: 1,
-                              offset: const Offset(0, 0))
-                        ],
-                        borderRadius: BorderRadius.circular(10)),
-                    child: const Icon(Iconsax.notification),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Favorite()));
+                    },
+                    child: Container(
+                        height: 35,
+                        width: 35,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  blurRadius: 5,
+                                  spreadRadius: 1,
+                                  offset: const Offset(0, 0))
+                            ],
+                            borderRadius: BorderRadius.circular(10)),
+                        child: const Icon(Iconsax.heart5, color: Colors.red)),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Notifications()));
+                    },
+                    child: Container(
+                      height: 35,
+                      width: 35,
+                      margin: const EdgeInsets.only(left: 15),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                blurRadius: 5,
+                                spreadRadius: 1,
+                                offset: const Offset(0, 0))
+                          ],
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Icon(Iconsax.notification5, color: mainColor),
+                    ),
                   ),
                 ]),
               ),
@@ -294,7 +368,7 @@ class _HomePageState extends State<HomePage> {
               ]),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
-                child: const Row(
+                child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -302,10 +376,21 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 16),
                       ),
-                      Text(
-                        "See all ",
-                        style: TextStyle(fontSize: 16),
-                      )
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const NearbySeeAll()));
+                          },
+                          child: Text(
+                            "See all",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          )),
                     ]),
               ),
               SizedBox(
@@ -426,7 +511,7 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(
-                                              left: 195, bottom: 10, top: 5),
+                                              left: 180, bottom: 10, top: 5),
                                           child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
@@ -460,13 +545,39 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                               ),
-                            )
+                            ),
+                            Positioned(
+                                top: 10,
+                                right: 10,
+                                child: Container(
+                                    width: 35,
+                                    height: 35,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white.withOpacity(0.6),
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          near.isLike = !near.isLike;
+                                        });
+                                      },
+                                      child: near.isLike == false
+                                          ? const Icon(
+                                              Iconsax.heart,
+                                              color: Colors.black,
+                                            )
+                                          : const Icon(
+                                              Iconsax.heart5,
+                                              color: Colors.pink,
+                                            ),
+                                    ))),
                           ]),
                         ),
                       );
                     }),
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -478,10 +589,20 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.bold,
                           fontSize: 16),
                     ),
-                    Text(
-                      "See all",
-                      style: TextStyle(color: Colors.black, fontSize: 16),
-                    ),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => PopularSeeAll()));
+                        },
+                        child: Text(
+                          "See all",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        )),
                   ],
                 ),
               ),
@@ -492,7 +613,9 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => DetailHotelPopular(popular: pop,)));
+                              builder: (context) => DetailHotelPopular(
+                                    popular: pop,
+                                  )));
                     },
                     child: Container(
                         margin: const EdgeInsets.symmetric(
@@ -504,8 +627,9 @@ class _HomePageState extends State<HomePage> {
                             color: Colors.white,
                             boxShadow: [
                               BoxShadow(
-                                  color: Colors.grey.withOpacity(0.3),
-                                  blurRadius: 2),
+                                  color: mainColor.withOpacity(0.3),
+                                  blurRadius: 5,
+                                  offset: const Offset(5, 5)),
                             ]),
                         child: Row(children: [
                           Container(
@@ -514,9 +638,38 @@ class _HomePageState extends State<HomePage> {
                             width: 100,
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                  fit: BoxFit.cover, image: pop.mainImage.image),
+                                  fit: BoxFit.cover,
+                                  image: pop.mainImage.image),
                               borderRadius: BorderRadius.circular(10),
                             ),
+                            child: Stack(children: [
+                              Positioned(
+                                  bottom: 10,
+                                  left: 10,
+                                  child: Container(
+                                      width: 35,
+                                      height: 35,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white.withOpacity(0.6),
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            pop.isLike = !pop.isLike;
+                                          });
+                                        },
+                                        child: pop.isLike == false
+                                            ? const Icon(
+                                                Iconsax.heart,
+                                                color: Colors.black,
+                                              )
+                                            : const Icon(
+                                                Iconsax.heart5,
+                                                color: Colors.pink,
+                                              ),
+                                      ))),
+                            ]),
                           ),
                           Container(
                             margin: const EdgeInsets.all(10),
@@ -534,11 +687,11 @@ class _HomePageState extends State<HomePage> {
                                           fontWeight: FontWeight.bold),
                                     ),
                                     SizedBox(
-                                      width: 40,
+                                      width: 35,
                                     ),
                                     Text.rich(
                                       TextSpan(
-                                          text: pop.price,
+                                          text: "\$${pop.price}".toString(),
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold),
                                           children: [

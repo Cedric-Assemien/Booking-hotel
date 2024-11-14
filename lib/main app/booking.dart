@@ -27,32 +27,14 @@ class _BookingState extends State<Booking> {
             color: mainColor,
             borderRadius: BorderRadius.circular(20),
           ),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: const Icon(
-                      Icons.arrow_back_ios,
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 100,
-                  ),
-                  const Text(
-                    "Booking",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                ],
-              ),
-            ],
+          child: Center(
+            child: Text(
+              "Booking",
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
           ),
         ),
         SizedBox(

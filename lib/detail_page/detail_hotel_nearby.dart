@@ -16,12 +16,12 @@ class DetailHotelNearby extends StatefulWidget {
 }
 
 class _DetailHotelNearbyState extends State<DetailHotelNearby> {
-   DateTime dateCheckIn = DateTime.now();
+  DateTime dateCheckIn = DateTime.now();
   DateTime dateCheckOut = DateTime.now();
   Future<void> selectTimeCheckIn(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
-         firstDate: DateTime(2024),
+        firstDate: DateTime(2024),
         lastDate: DateTime(3000),
         initialDate: dateCheckIn);
     if (picked != null && picked != dateCheckIn) {
@@ -37,12 +37,14 @@ class _DetailHotelNearbyState extends State<DetailHotelNearby> {
         firstDate: DateTime(2024),
         lastDate: DateTime(3000),
         initialDate: dateCheckOut);
+
     if (picked != null && picked != dateCheckOut) {
       setState(() {
         dateCheckOut = picked;
       });
     }
   }
+
   bool extenDescrip = false;
   void _toggleDescription() {
     setState(() {
@@ -74,11 +76,13 @@ class _DetailHotelNearbyState extends State<DetailHotelNearby> {
                       children: [
                         InkWell(
                           onTap: () {
-                            selectTimeCheckIn(context);
+                            setState(() {
+                              selectTimeCheckIn(context);
+                            });
                           },
                           child: Container(
                             height: 50,
-                            width: 130,
+                            width: 150,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.white,
@@ -103,7 +107,7 @@ class _DetailHotelNearbyState extends State<DetailHotelNearby> {
                                       ),
                                     ),
                                     Text(
-                                      "${dateCheckIn.year} / ${dateCheckIn.month} / ${dateCheckIn.day} ",
+                                      "${dateCheckIn.year} /${dateCheckIn.month} /${dateCheckIn.day}",
                                       style: TextStyle(
                                           fontSize: 15,
                                           color: Colors.black,
@@ -116,7 +120,7 @@ class _DetailHotelNearbyState extends State<DetailHotelNearby> {
                           ),
                         ),
                         SizedBox(
-                          width: 30,
+                          width: 10,
                         ),
                         InkWell(
                           onTap: () {
@@ -124,7 +128,7 @@ class _DetailHotelNearbyState extends State<DetailHotelNearby> {
                           },
                           child: Container(
                             height: 50,
-                            width: 130,
+                            width: 150,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.white,
@@ -148,15 +152,12 @@ class _DetailHotelNearbyState extends State<DetailHotelNearby> {
                                         color: Colors.black54,
                                       ),
                                     ),
-                                    InkWell(
-                                      onTap: () {},
-                                      child: Text(
-                                        "${dateCheckOut.year} / ${dateCheckOut.month} / ${dateCheckOut.day} ",
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.w500),
-                                      ),
+                                    Text(
+                                      "${dateCheckOut.year} /${dateCheckOut.month} /${dateCheckOut.day} ",
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w500),
                                     ),
                                   ],
                                 ),
@@ -243,7 +244,7 @@ class _DetailHotelNearbyState extends State<DetailHotelNearby> {
                         width: 35,
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(50),
+                          shape: BoxShape.circle,
                         ),
                         child: Container(
                           height: 35,
