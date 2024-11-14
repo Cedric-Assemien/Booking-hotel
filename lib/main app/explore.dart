@@ -25,7 +25,7 @@ class _ExploreState extends State<Explore> {
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/images/explore.png"),
-                fit: BoxFit.cover,
+                fit: BoxFit.fitHeight,
               ),
             ),
           ),

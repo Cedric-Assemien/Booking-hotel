@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:booking_hotel/detail_page/detail_hotel_nearby.dart';
 import 'package:booking_hotel/detail_page/detail_hotel_popular.dart';
 import 'package:booking_hotel/list_proprety.dart';
-import 'package:booking_hotel/list_proprety.dart';
 import 'package:booking_hotel/main%20app/favorite.dart';
 import 'package:booking_hotel/main%20app/notification.dart';
 import 'package:booking_hotel/see%20all/nearby_see_all.dart';

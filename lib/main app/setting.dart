@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'dart:ui';
 
 import 'package:booking_hotel/authentificate/signIn_page.dart';
